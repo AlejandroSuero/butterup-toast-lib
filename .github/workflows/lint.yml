@@ -1,0 +1,34 @@
+name: Linting
+
+on: ["push", "pull_request"]
+
+permissions:
+  contents: read
+
+jobs:
+  eslint:
+    name: Linting project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        id: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install Dependencies
+        id: npm-ci
+        run: npm ci
+
+      - name: Prettier check
+        id: npm-format-check
+        run: npm run format:check
+
+      - name: ESLint check
+        id: npm-lint
+        run: npm run lint

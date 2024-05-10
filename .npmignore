@@ -1,0 +1,10 @@
+node_modules/*
+src/*
+.vscode/*
+web/*
+web/README.md
+
+tsconfig.json
+tsup.config.ts
+.eslintignore
+.eslintrc.js
